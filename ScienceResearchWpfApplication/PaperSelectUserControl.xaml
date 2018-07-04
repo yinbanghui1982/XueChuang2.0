@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="ScienceResearchWpfApplication.PaperSelectUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScienceResearchWpfApplication"
+             mc:Ignorable="d" 
+             d:DesignHeight="1200" d:DesignWidth="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="500*" />
+            <RowDefinition Height="500*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300*"/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel  Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
+            <ToolBar x:Name="toolBar">
+                <Button   x:Name="btnFull" Click="btnFull_Click" Height="30">
+                    <TextBlock Text="全屏" Grid.Row="0" Margin="15,0"/>
+                </Button>
+                <Button   x:Name="btnHalf" Click="btnHalf_Click" Height="30">
+                    <TextBlock Text="半屏" Grid.Row="0" Margin="0,0,15,0"/>
+                </Button>
+                <Button   x:Name="btnRefresh" Click="btnRefresh_Click" Height="30">
+                    <TextBlock Text="刷新" Grid.Row="0" Margin="0,0,15,0"/>
+                </Button>
+            </ToolBar>
+
+            <ToolBar x:Name="toolBar2"   Grid.Row="0" Grid.Column="0"  Margin="0,0,0,0"  Height="30">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="zhengRadioButton" Content="左栏"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="zhengRadioButton_Checked" BorderThickness="1"/>
+                    <RadioButton x:Name="fanRadioButton" Content="右栏"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Checked="fanRadioButton_Checked"/>
+                </StackPanel>
+            </ToolBar>
+        </WrapPanel>
+        <DataGrid x:Name="paperDataGrid" Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
+                  HeadersVisibility="Column"  MouseLeftButtonUp="paperDataGrid_MouseLeftButtonUp" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="paperDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" Width="40"/>
+                <DataGridTextColumn Header="文章名" Binding="{Binding Path=文章名}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <ScrollViewer  Grid.Row="2" Grid.Column="0" Margin="15,15,0,0" Grid.RowSpan="2">
+            <StackPanel>
+                <TextBlock Text="1 新建文章" Height="30" FontWeight="Bold" />                 
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="项目ID：" Grid.Row="0"  Grid.Column="0" />
+                    <TextBox Name="projectIdTextBox" Width="150"  Grid.Row="0"  Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,0,5"/>
+                    <TextBlock Text="段数："  Grid.Row="0"  Grid.Column="2" />
+                    <TextBox Name="paraNumberTextBox" Width="150" Grid.Row="0"  Grid.Column="3" HorizontalAlignment="Left" Margin="0,5,0,5"/>
+                    <TextBlock Text="文章名称："  Grid.Row="1"  Grid.Column="0" />
+                    <TextBox Name="paperNameTextBox"  Grid.Row="1"  Grid.Column="1" Grid.ColumnSpan="3" Margin="0,5,50,5"/>
+                    <Button Name="createPaperButton" Width="100"  Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="4"  Height="30" Content="创建" Click="createPaperButton_Click"/>
+                </Grid>
+
+                
+                <TextBlock Text="2 批量添加参考语段" Height="30" Margin="0,50,0,0" FontWeight="Bold" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="文章ID："  Grid.Column="0" />
+                    <TextBox Name="paraIdTextBox" Width="150" Grid.Column="1" HorizontalAlignment="Left"/>
+                    <TextBlock Text="张数："  Grid.Column="2" />
+                    <TextBox Name="numberTextBox" Width="150" Grid.Column="3" HorizontalAlignment="Left"/>
+                    <Button Name="addParaButton" Width="100"  Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="4" Height="30" Content="添加" Click="addParaButton_Click"/>
+                </Grid>
+
+                <TextBlock Text="3 导入文件夹" Height="30" Margin="0,50,0,0" FontWeight="Bold" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Name="selectFileButton" Width="100" Grid.Column="0" HorizontalAlignment="Center" Content="选择文件夹" Click="selectFileButton_Click"/>
+                </Grid>
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>

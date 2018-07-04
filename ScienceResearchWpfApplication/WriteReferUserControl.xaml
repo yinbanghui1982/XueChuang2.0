@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="ScienceResearchWpfApplication.TextManage.WriteReferUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScienceResearchWpfApplication.TextManage"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <Grid Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="500*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300*"/>
+        </Grid.ColumnDefinitions>
+
+        <WrapPanel  Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
+            <ToolBar x:Name="toolBar"   Grid.Row="0" Grid.Column="0"  Margin="0,0,0,0" HorizontalAlignment="Left" >
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="textRadioButton" Content="文本"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="btnText_Click" BorderThickness="1"/>
+                    <RadioButton x:Name="inkRadioButton" Content="笔记"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="btnInk_Click"/>
+                </StackPanel>
+                
+                <!--<Button   Name="btnText" Click="btnText_Click" Height="30">
+                    <TextBlock Text="文本" Grid.Row="0" Margin="15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnInk" Click="btnInk_Click" Height="30">
+                    <TextBlock Text="笔迹" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>-->
+                `
+                <Button   Name="btnFull" Click="btnFull_Click" Height="30">
+                    <TextBlock Text="全屏" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnHalf" Click="btnHalf_Click" Height="30">
+                    <TextBlock Text="半屏" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+            </ToolBar>
+
+            <ToolBar x:Name="toolBar2"  Margin="0,0,0,0" >
+                <Button   Name="btnNextPage" Click="btnNextPage_Click" Height="30">
+                    <TextBlock Text="下一页" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnPreviousPage" Click="btnPreviousPage_Click" Height="30">
+                    <TextBlock Text="上一页" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <TextBox Name="pageTextBox" Width="50" TextAlignment="Center"/>
+                <TextBlock Name="pageTextBlock" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button   Name="btnChangePage" Click="btnChangePage_Click" Height="30">
+                    <TextBlock Text="切换" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+            </ToolBar>
+        </WrapPanel>
+        
+        <ScrollViewer x:Name="scrolls" VerticalScrollBarVisibility="Auto"  Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0,-1,0,0" FontSize="24" FontFamily="宋体" PanningMode="Both" ManipulationBoundaryFeedback="scrolls_ManipulationBoundaryFeedback">
+            <ScrollViewer.Content>
+                <StackPanel Name="paperStackPanel"  ScrollViewer.VerticalScrollBarVisibility="Auto" RequestBringIntoView="paperStackPanel_RequestBringIntoView">
+                    <StackPanel.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="隐藏滚动条" Name="hideScrollMunuItem" Click="hideScrollMunuItem_Click" />
+                            <MenuItem Header="显示滚动条" Name="viewScrollMunuItem" Click="viewScrollMunuItem_Click" />
+                        </ContextMenu>
+                    </StackPanel.ContextMenu>
+                </StackPanel>
+            </ScrollViewer.Content>
+        </ScrollViewer>
+
+        
+    </Grid>
+</UserControl>

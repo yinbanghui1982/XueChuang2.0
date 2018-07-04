@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="ScienceResearchWpfApplication.Xps.XpsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScienceResearchWpfApplication.Xps"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0" Name="cdTree"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        
+        <WrapPanel Grid.Row="0" Grid.ColumnSpan="3" Height="30" Orientation="Horizontal" HorizontalAlignment="Left">
+            <CheckBox Content="导航" Height="20"  Margin="0,0,15,0" Name="cbNav" Click="cbNav_Click" />
+            <ToolBar Name="hongguanToolBar"  Height="30" >                
+                <Button   Name="btnPrev" Click="btnPrev_Click" >
+                    <TextBlock Text="前页" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnNext" Click="btnNext_Click" >
+                    <TextBlock Text="后页" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnPrevSelection" Click="btnPrevSelection_Click" >
+                    <TextBlock Text="前项" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnNextSelection" Click="btnNextSelection_Click" >
+                    <TextBlock Text="后项" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <TextBox Name="yeshuTextbox" Width="50" TextAlignment="Center"/>
+            </ToolBar>
+        </WrapPanel>
+
+        <GroupBox Header="导航目录" Grid.Row="1" Grid.Column="0" >
+            <TreeView Name="tvTree" SelectedItemChanged="tvTree_SelectedItemChanged"/>
+        </GroupBox>
+        <GridSplitter Width="3" ResizeBehavior="PreviousAndNext" Grid.Row="1" Grid.Column="1" Background="LightGray"/>
+        <DocumentViewer Name="documentViewer" Grid.Row="1" Grid.Column="2" PageViewsChanged="dvShow_PageViewsChanged"/>
+        
+
+        <Grid Name="referGrid" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+    </Grid>
+</UserControl>

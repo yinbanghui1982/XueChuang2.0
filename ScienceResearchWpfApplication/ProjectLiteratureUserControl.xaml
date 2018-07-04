@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="ScienceResearchWpfApplication.ProjectLiteratureUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScienceResearchWpfApplication"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="300*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="250*"/>
+        </Grid.ColumnDefinitions>
+
+        <WrapPanel  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <ToolBar x:Name="toolBar"  Margin="0,0,0,0" HorizontalAlignment="Left" >
+
+                <Button   Name="btnFull" Click="btnFull_Click" Height="30">
+                    <TextBlock Text="全屏" Grid.Row="0" Margin="15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnHalf" Click="btnHalf_Click"  Height="30">
+                    <TextBlock Text="半屏" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+            </ToolBar>
+            <ToolBar x:Name="toolBarKeyword"  Margin="0,0,0,0" HorizontalAlignment="Left" >
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="allPaperRadioButton" Content="所有"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="allPaperRadioButton_Checked"/>
+                    <RadioButton x:Name="projectPaperRadioButton" Content="项目"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="projectPaperRadioButton_Checked"/>
+                    <RadioButton x:Name="selectedKeywordPaperRadioButton" Content="关词"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="selectedKeywordPaperRadioButton_Checked" />
+                </StackPanel>
+                <Button   x:Name="btnAddKeyword" Click="btnAddKeyword_Click" Height="30" >
+                    <TextBlock Text="增关" Margin="0,0,15,0"/>
+                </Button>
+                <Button   x:Name="btnRemoveKeyword" Click="btnRemoveKeyword_Click" Height="30" >
+                    <TextBlock Text="删关" Margin="0,0,0,0"/>
+                </Button>
+            </ToolBar>
+
+        </WrapPanel>
+
+        <Grid  Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid x:Name="keywordDataGrid"  Grid.Row="0" Grid.Column="0" MouseLeftButtonUp="keywordDataGrid_MouseLeftButtonUp" IsReadOnly="True"/>
+            <DataGrid x:Name="keywordSelectedDataGrid"  Grid.Row="1" Grid.Column="0" IsReadOnly="True"/>
+        </Grid>
+        <DataGrid x:Name="paperDataGrid"  Grid.Row="1" Grid.Column="1" MouseLeftButtonUp="paperDataGrid_MouseLeftButtonUp" IsReadOnly="True"/>
+    </Grid>
+</UserControl>

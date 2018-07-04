@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="ScienceResearchWpfApplication.TextManage.TextboxInkcavasUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScienceResearchWpfApplication.TextManage"
+             xmlns:ScienceResearchWpfApplication="clr-namespace:ScienceResearchWpfApplication"
+             mc:Ignorable="d" GotFocus="UserControl_GotFocus" LostFocus="UserControl_LostFocus" Loaded="UserControl_Loaded">
+    <Grid Name="grid">
+        <ScienceResearchWpfApplication:ScienceResearchInkCanvas x:Name="inkCanvas" Panel.ZIndex="1" Background="Transparent"/>
+        <RichTextBox Name="paragraphRichTextBox" AcceptsReturn="True" AcceptsTab="True"  Panel.ZIndex="0" Background="Transparent"  VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled">
+            <FlowDocument/>
+        </RichTextBox>
+    </Grid>
+</UserControl>

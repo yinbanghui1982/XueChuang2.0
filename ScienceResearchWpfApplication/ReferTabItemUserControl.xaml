@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="ScienceResearchWpfApplication.TextManage.ReferTabItemUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScienceResearchWpfApplication.TextManage"
+             xmlns:ScienceResearchWpfApplication="clr-namespace:ScienceResearchWpfApplication"
+             xmlns:AI="clr-namespace:ScienceResearchWpfApplication.AI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="500*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300*"/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel Grid.Row="0" Grid.Column="0"  Orientation="Horizontal">
+            <ScienceResearchWpfApplication:HalfFullUserControl x:Name="halfFullUserControl"/>
+            <ToolBar x:Name="paragraphToolBar" Height="30" >
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="textRadioButton" Content="文本"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" BorderThickness="1" Click="textRadioButton_Click"/>
+                    <RadioButton x:Name="inkRadioButton" Content="笔记"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Click="inkRadioButton_Click"/>
+                </StackPanel>
+            </ToolBar>
+
+            <ToolBar x:Name="saveToolBar"    Margin="0,0,0,0" HorizontalAlignment="Left" >
+                <Button   Name="btSave" Click="btnSave_Click" Height="30" >
+                    <TextBlock Text="保存" Grid.Row="0" Margin="0,0,0,0"></TextBlock>
+                </Button>
+            </ToolBar>
+
+            <local:FontSelectUserControl x:Name="fontSelectUserControl" Loaded="fontSelectUserControl_Loaded"  Height="30"/>
+
+            <ToolBar Name="partAllToolBar" Height="30" >
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="allRadioButton" Content="所有"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="btnAll_Click" BorderThickness="1"/>
+                    <RadioButton x:Name="partRadioButton" Content="部分"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Checked="btnPart_Click"/>
+                </StackPanel>
+            </ToolBar>
+
+            <AI:ZhinengPipeiUserControl x:Name="zhinengPipeiUserControl" Height="30"/>
+
+        </WrapPanel>
+
+        <ScrollViewer x:Name="scrolls" VerticalScrollBarVisibility="Auto"  Grid.Row="1" Grid.Column="0" 
+                      VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"  
+                      FontSize="{Binding Path=SelectedFontSize,Mode=TwoWay}" 
+                      FontFamily="{Binding Path=SelectedFontFamily,Mode=TwoWay}" 
+                      PanningMode="VerticalOnly" ManipulationBoundaryFeedback="scrolls_ManipulationBoundaryFeedback" 
+                      IsManipulationEnabled="True" AutomationProperties.IsRowHeader="True" AutomationProperties.IsRequiredForForm="True" 
+                      AutomationProperties.IsColumnHeader="True" OverridesDefaultStyle="True">
+            <ScrollViewer.Content>
+                <StackPanel Name="paperStackPanel" AutomationProperties.IsRequiredForForm="True" AutomationProperties.IsRowHeader="True" 
+                            IsManipulationEnabled="True" OverridesDefaultStyle="True" ForceCursor="True" 
+                            RequestBringIntoView="paperStackPanel_RequestBringIntoView" LostFocus="paperStackPanel_LostFocus"  >
+                    <local:TextboxInkcavasUserControl x:Name="textboxInkcavasUserControl"/>
+                </StackPanel>
+            </ScrollViewer.Content>
+        </ScrollViewer>
+        
+    </Grid>
+</UserControl>

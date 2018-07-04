@@ -1,0 +1,76 @@
+﻿<Window x:Class="ScienceResearchWpfApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScienceResearchWpfApplication"
+        mc:Ignorable="d"
+        Title="学创2.0" WindowState="Maximized" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Closing="Window_Closing" WindowStyle="SingleBorderWindow" WindowStartupLocation="Manual" Icon="soft_icon.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <WrapPanel  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" >
+            <local:InkPropertiesUserControl x:Name="inkProperties" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="30"/>
+            <ToolBar x:Name="inkToolBar"   Grid.Row="0" Grid.Column="0"  Margin="0,0,0,0"  Height="30">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="inkRadioButton1"  Content="笔1"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="inkRadioButton1_Checked"/>
+                    <RadioButton x:Name="inkRadioButton2" Content="笔2"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="inkRadioButton2_Checked"/>
+                    <RadioButton x:Name="inkRadioButton3" Content="笔3"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Checked="inkRadioButton3_Checked"/>
+                </StackPanel>
+            </ToolBar>
+            <ToolBar x:Name="jietuToolBar"   Grid.Row="0" Grid.Column="0"  Margin="0,0,0,0"  Height="30">
+                <Button x:Name="jieZuoButton" Content="截左"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Click="jieZuoButton_Click" MouseRightButtonDown="jieZuoButton_MouseRightButtonDown"/>
+                <Button x:Name="jieYouButton" Content="截右"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Click="jieYouButton_Click" MouseRightButtonDown="jieYouButton_MouseRightButtonDown"/>
+                <Button x:Name="jieQuanButton" Content="截全"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Click="jieQuanButton_Click" MouseRightButtonDown="jieQuanButton_MouseRightButtonDown"/>
+            </ToolBar>
+
+            <ToolBar x:Name="applicationToolBar"   Grid.Row="0" Grid.Column="0"  Margin="0,0,0,0"  Height="30">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <RadioButton x:Name="includeRadioButton" Content="嵌入"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="includeRadioButton_Checked" BorderThickness="1"/>
+                    <RadioButton x:Name="excludeButton" Content="独立"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Checked="excludeRadioButton_Checked"/>
+                </StackPanel>
+            </ToolBar>
+
+            <ToolBar x:Name="windowToolBar"   Grid.Row="0" Grid.Column="0"  Margin="0,0,0,0"  Height="30">
+                <Button x:Name="rightButton" Content="右置"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Click="rightButton_Click"/>
+                <Button x:Name="leftButton" Content="左置"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Click="leftButton_Click"/>
+            </ToolBar>
+
+            <ToolBar x:Name="setupToolBar"   Grid.Row="0" Grid.Column="0"  Margin="0,0,0,0"  Height="30">
+                <Button x:Name="helpButton"   HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Click="helpButton_Click">
+                    <TextBlock Text="帮助" Margin="0,0" ></TextBlock>
+                </Button>
+            </ToolBar>
+            <ToolBar x:Name="windowToolBar2"   Grid.Row="0" Grid.Column="0"  Margin="0,0,0,0"  Height="30">
+                <Button x:Name="pingbanButton" Content="平板"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Click="pingbanButton_Click"/>
+                <Button x:Name="pcButton" Content="PC"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Click="pcButton_Click"/>
+            </ToolBar>
+            <!--<ToolBar x:Name="windowToolBar3"   Grid.Row="0" Grid.Column="0"  Margin="0,0,0,0"  Height="30">
+                <Button x:Name="refreshKeywordButton" Content="刷关"  HorizontalAlignment="Center" Margin="15,0" VerticalAlignment="Center" Click="refreshKeywordButton_Click"/>                
+            </ToolBar>-->
+        </WrapPanel>
+        <Grid Name="grid" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TabControl Name="leftTabControl"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" AllowDrop="True" MouseDoubleClick="paperTabControl_MouseDoubleClick" Margin="0,0,0,0" GotFocus="leftTabControl_GotFocus" />
+
+            <TabControl Name="rightTabControl" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" MouseDoubleClick="figureTabControl_MouseDoubleClick" Margin="0,0,0,0" GotFocus="rightTabControl_GotFocus" >
+                <TabItem Header="段图" Name="paragraphFigureTabItem_r">
+                    <local:ParagraphFigureUserControl x:Name="paragraphFigureUserControl_r"/>
+                </TabItem>
+                
+            </TabControl>
+        </Grid>
+        <StatusBar Name="statusBar" Grid.Row="2"/>
+
+    </Grid>
+</Window>

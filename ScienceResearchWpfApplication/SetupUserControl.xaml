@@ -1,0 +1,245 @@
+﻿<UserControl x:Class="ScienceResearchWpfApplication.SetupUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScienceResearchWpfApplication"
+             xmlns:TextManage="clr-namespace:ScienceResearchWpfApplication.TextManage"
+             mc:Ignorable="d" 
+             d:DesignHeight="1800" d:DesignWidth="600" Loaded="UserControl_Loaded" MouseLeave="UserControl_MouseLeave">
+    <Grid>        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="500*" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300*"/>
+        </Grid.ColumnDefinitions>
+        
+        <ToolBar x:Name="toolBar"   Grid.Row="0" Grid.Column="0"  Margin="0,0,0,0" HorizontalAlignment="Left" >
+            <Button   Name="btnFull" Click="btnFull_Click" >
+                <TextBlock Text="全屏" Grid.Row="0" Margin="15,0"></TextBlock>
+            </Button>
+            <Button   Name="btnHalf" Click="btnHalf_Click" >
+                <TextBlock Text="半屏" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+            </Button>            
+        </ToolBar>
+        <ScrollViewer  Grid.Row="1" Grid.Column="0" Margin="15,15,0,0" Grid.RowSpan="2">
+            <StackPanel>
+                <TextBlock Text="1 编辑器设置" Height="30" FontWeight="Bold" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="25" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="打开字体：" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                    <TextManage:FontSelectUserControl x:Name="fontSelectUserControl" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top"/>
+                    <TextBlock Text="打开状态：" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                        <RadioButton x:Name="textRadioButton" Content="文本"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Checked="textRadioButton_Checked"/>
+                        <RadioButton x:Name="inkRadioButton" Content="笔迹"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Checked="inkRadioButton_Checked"/>
+                    </StackPanel>
+                </Grid>
+
+                <TextBlock Text="2 数据库管理设置" Height="30" Margin="0,50,0,0" FontWeight="Bold" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <TextBlock Text="打开状态：" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                        <RadioButton x:Name="textRadioButton_db" Content="文本"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Checked="textRadioButton_db_Checked"/>
+                        <RadioButton x:Name="inkRadioButton_db" Content="笔迹"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Checked="inkRadioButton_db_Checked"/>
+                    </StackPanel>
+
+                </Grid>
+
+                <TextBlock Text="3 Windows Ink设置" Height="30" Margin="0,50,0,0" FontWeight="Bold" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="笔1：" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                    <local:InkPropertiesUserControl x:Name="inkProperties1"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"/>
+                    <TextBlock Text="笔2：" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                    <local:InkPropertiesUserControl x:Name="inkProperties2"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"/>
+                    <TextBlock Text="笔3：" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                    <local:InkPropertiesUserControl x:Name="inkProperties3"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left"/>
+                </Grid>
+
+                <TextBlock Text="4 截图设置" Height="30" Margin="0,50,0,0" FontWeight="Bold" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="左："  Grid.Column="0" />
+                    <TextBox Name="screenLeftTextBox" Width="150" Grid.Column="1" HorizontalAlignment="Left"/>
+                    <TextBlock Text="右："  Grid.Column="2" />
+                    <TextBox Name="screenRightTextBox" Width="150" Grid.Column="3" HorizontalAlignment="Left"/>
+                </Grid>
+                
+                <!--<TextBlock Text="5 外部应用程序和本程序的窗口位置" Height="30" Margin="0,50,0,0" FontWeight="Bold" />
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                    <RadioButton x:Name="normalRadioButton" Content="正常"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center"/>
+                    <RadioButton x:Name="leftRightRadioButton" Content="左右"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center"/>
+                </StackPanel>-->
+
+                <TextBlock Text="5 左、右栏宽度设置" Height="30" Margin="0,50,0,0" FontWeight="Bold" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="左："  Grid.Column="0" />
+                    <TextBox Name="leftTextBox" Width="150" Grid.Column="1" HorizontalAlignment="Left" LostFocus="leftTextBox_LostFocus"/>
+                    <TextBlock Text="右："  Grid.Column="2" />
+                    <TextBox Name="rightTextBox" Width="150" Grid.Column="3" HorizontalAlignment="Left" LostFocus="rightTextBox_LostFocus"/>
+                </Grid>
+                
+                <TextBlock Name="registerCodeTextBlock" Text="6 注册码（还未进行注册）" Height="30" Margin="0,50,0,0" FontWeight="Bold" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <!--<RowDefinition Height="Auto" />-->
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--<Expander Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Header="注册方法"  Margin="0,0,0,20">
+                        <TextBlock Grid.Row="1" Grid.Column="0" >
+                        <Run>1. 通过微信将软件购买费转账给软件作者（微信号：17623579427）</Run>
+                        <LineBreak/>
+                        <Run>2 将下面文本框中的Mac地址通过微信告知软件作者</Run>
+                        <LineBreak/>
+                        <Run>3 将软件作者回复的注册码，填入下面文本框中</Run>
+                        <LineBreak/>
+                        <Run>4 点击下面的注册按钮</Run>  
+                        <LineBreak/>
+                        <Run>5 如有疑问，请咨询软件作者（尹帮辉，电话：17623579427，邮箱：yinbanghui2007@163.com）</Run>
+                        </TextBlock>
+                    </Expander>-->
+
+                    <TextBlock Text="Mac地址："  Grid.Row="0" Grid.Column="0" />
+                    <TextBox Name="macTextBox" Width="150"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"/>
+                    <TextBlock Text="注册码：" Grid.Row="0"  Grid.Column="2" />
+                    <TextBox Name="yanzhenTextBox" Width="150" Grid.Row="0"  Grid.Column="3"  HorizontalAlignment="Left"/>
+                    <Button Name="yanZhenButton" Width="100"  Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="4" Height="30" Content="注册" Click="yanZhenButton_Click"/>
+                </Grid>
+
+                <TextBlock Text="7 语段宽度设置" Height="30" Margin="0,50,0,0" FontWeight="Bold" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="创作语段："  Grid.Column="0" />
+                    <TextBox Name="yd_cz_width_TextBox" Width="150" Grid.Column="1" HorizontalAlignment="Left" LostFocus="yd_cz_width_TextBox_LostFocus"/>
+                    <TextBlock Text="参考语段："  Grid.Column="2" />
+                    <TextBox Name="yd_ck_width_TextBox" Width="150" Grid.Column="3" HorizontalAlignment="Left" LostFocus="yd_ck_width_TextBox_LostFocus"/>
+                </Grid>
+
+                <TextBlock Text="8 文本文件编码格式" Height="30" Margin="0,50,0,0" FontWeight="Bold" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                        <RadioButton x:Name="ASCIIRadioButton" Content="ASCII"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="ASCIIRadioButton_Checked"/>
+                        <RadioButton x:Name="BigEndianUnicodeRadioButton" Content="BigEndianUnicode"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="BigEndianUnicodeRadioButton_Checked"/>
+                        <RadioButton x:Name="UnicodeRadioButton" Content="Unicode"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="UnicodeRadioButton_Checked"/>
+                        <RadioButton x:Name="UTF32RadioButton" Content="UTF32"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="UTF32RadioButton_Checked"/>
+                        <RadioButton x:Name="UTF7RadioButton" Content="UTF7"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="UTF7RadioButton_Checked"/>
+                        <RadioButton x:Name="UTF8RadioButton" Content="UTF8"  HorizontalAlignment="Center" Margin="0,0,15,0" VerticalAlignment="Center" Checked="UTF8RadioButton_Checked"/>
+                        <RadioButton x:Name="DefaultRadioButton" Content="Default"  HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Checked="DefaultRadioButton_Checked"/>                        
+                    </StackPanel>
+                </Grid>
+
+                <TextBlock Text="9 识别设置" Height="30" Margin="0,50,0,0" FontWeight="Bold" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                        <CheckBox Name="gjcShibieCheckBox" IsChecked="False" Content="关键词" Margin="0,0,15,0" Checked="gjcShibieCheckBox_Checked" Unchecked="gjcShibieCheckBox_Unchecked"/>
+                        <CheckBox Name="dcShibieCheckBox" IsChecked="False" Content="单词" Margin="0,0,15,0" Checked="dcShibieCheckBox_Checked" Unchecked="dcShibieCheckBox_Unchecked"/>
+                        <CheckBox Name="dyShibieCheckBox" IsChecked="False" Content="短语" Margin="0,0,15,0" Checked="dyShibieCheckBox_Checked" Unchecked="dyShibieCheckBox_Unchecked"/>
+                        <CheckBox Name="jxShibieCheckBox" IsChecked="False" Content="句型" Margin="0,0,15,0" Checked="jxShibieCheckBox_Checked" Unchecked="jxShibieCheckBox_Unchecked"/>
+                        <CheckBox Name="ydShibieCheckBox" IsChecked="False" Content="语段" Margin="0,0,15,0" Checked="ydShibieCheckBox_Checked" Unchecked="ydShibieCheckBox_Unchecked"/>
+                        <CheckBox Name="wzShibieCheckBox" IsChecked="False" Content="文章" Checked="wzShibieCheckBox_Checked" Unchecked="wzShibieCheckBox_Unchecked"/>             
+                    </StackPanel>
+                </Grid>
+
+                <TextBlock Text="10 匹配设置" Height="30" Margin="0,50,0,0" FontWeight="Bold" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                        <CheckBox Name="gjc_czwz_PipeiCheckBox" IsChecked="False" Content="关词->创文" Margin="0,0,15,0" Checked="gjc_czwz_PipeiCheckBox_Checked"/>
+                        <CheckBox Name="dc_yd_PipeiCheckBox" IsChecked="False" Content="单词->语段" Margin="0,0,15,0" Checked="dc_yd_PipeiCheckBox_Checked"/>
+                        <CheckBox Name="dc_ckwz_PipeiCheckBox" IsChecked="False" Content="单词->参文" Margin="0,0,15,0" Checked="dc_ckwz_PipeiCheckBox_Checked"/>
+                        <CheckBox Name="dc_xps_PipeiCheckBox" IsChecked="False" Content="单词->xps" Margin="0,0,15,0" Checked="dc_xps_PipeiCheckBox_Checked"/>
+                        <CheckBox Name="dy_yd_PipeiCheckBox" IsChecked="False" Content="短语->语段" Margin="0,0,15,0" Checked="dy_yd_PipeiCheckBox_Checked" />
+                        <CheckBox Name="dy_ckwz_PipeiCheckBox" IsChecked="False" Content="短语->参文" Margin="0,0,15,0" Checked="dy_ckwz_PipeiCheckBox_Checked"/>
+                        <CheckBox Name="jx_ckwz_PipeiCheckBox" IsChecked="False" Content="句型->参文" Margin="0,0,15,0" Checked="jx_ckwz_PipeiCheckBox_Checked"/>
+                        <CheckBox Name="yd_ckwz_PipeiCheckBox" IsChecked="False" Content="语段->参文" Margin="0,0,15,0" Checked="yd_ckwz_PipeiCheckBox_Checked"/>
+                        <CheckBox Name="wz_ckwz_PipeiCheckBox" IsChecked="False" Content="文章->参文" Margin="0,0,15,0" Checked="wz_ckwz_PipeiCheckBox_Checked"/>
+                    </WrapPanel>
+                </Grid>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

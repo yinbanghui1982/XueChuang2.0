@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="ScienceResearchWpfApplication.KeywordTreeUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScienceResearchWpfApplication"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="500*" />
+        </Grid.RowDefinitions>
+
+        <WrapPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="3" >
+            <ToolBar x:Name="toolBar"   Margin="0,0,0,0" HorizontalAlignment="Left" Height="30">
+                <ComboBox Name="linkComboBox" Grid.Row="0" Grid.Column="0" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,15,0">
+                    <Label Content="无" Name="lblNone" />
+                    <Label Content="关映" Name="lblKeywordMapping"/>
+                    <Label Content="关键词" Name="lblKeyword"/>
+                    <Label Content="单词" Name="lblDc"/>
+                    <Label Content="单词2" Name="lblDc2"/>
+                    <Label Content="短语" Name="lblDy"/>
+                    <Label Content="句型" Name="lblJx"/>
+                    <Label Content="语段" Name="lblYd"/>
+                    <Label Content="文章" Name="lblWz"/>
+                    <Label Content="项目" Name="lblXm"/>
+                    <Label Content="图片" Name="lblTp"/>
+                    <Label Content="图片创作" Name="lblTpcz"/>
+                </ComboBox>
+                <Button   x:Name="btnFull" Click="btnFull_Click" >
+                    <TextBlock Text="全屏" Margin="0,0,15,0"/>
+                </Button>
+                <Button   x:Name="btnHalf" Click="btnHalf_Click" Margin="0,0,15,0" >
+                    <TextBlock Text="半屏"/>
+                </Button>
+                <Button   x:Name="btnRefresh" Click="btnRefresh_Click" Margin="0,0,15,0" >
+                    <TextBlock Text="刷新"/>
+                </Button>
+                <Button   x:Name="btnExpand" Click="btnExpand_Click" Margin="0,0,15,0" >
+                    <TextBlock Text="展开"/>
+                </Button>
+                <Button   x:Name="btnZhedie" Click="btnZhedie_Click" Margin="0,0,15,0" >
+                    <TextBlock Text="折叠"/>
+                </Button>
+            </ToolBar>
+
+            <ToolBar x:Name="toolBar2"  Margin="0,0,0,0" HorizontalAlignment="Left"  Height="30">
+                <TextBox Name="keywordTextBox" Width="80" Margin="0,0,15,0"/>
+                <Button   Name="btnAddSonKeyword" Click="btnAddSonKeyword_Click" >
+                    <TextBlock Text="增子" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnAddRootKeyword" Click="btnAddRootKeyword_Click" >
+                    <TextBlock Text="增根" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnEditKeyword" Click="btnEditKeyword_Click" >
+                    <TextBlock Text="修改" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnDeleteKeyword" Click="btnDeleteKeyword_Click" >
+                    <TextBlock Text="删除" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnJianqieKeyword" Click="btnJianqieKeyword_Click">
+                    <TextBlock Text="剪切" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnNiantieKeyword" Click="btnNiantieKeyword_Click">
+                    <TextBlock Text="粘子" Grid.Row="0" Margin="0,0,0,0"></TextBlock>
+                </Button>
+            </ToolBar>
+            <ToolBar x:Name="toolBar3"  Margin="0,0,0,0" HorizontalAlignment="Left"  Height="30">
+                <TextBox Name="wordTextBox" Width="80" Margin="0,0,15,0"/>
+                <Button   Name="btnAddWord" Click="btnAddWord_Click" >
+                    <TextBlock Text="增词" Grid.Row="0" Margin="0,0,15,0"></TextBlock>               
+                </Button>
+                <Button   Name="btnAddDuanyu" Click="btnAddDuanyu_Click" >
+                    <TextBlock Text="增短" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+
+            </ToolBar>
+        </WrapPanel>
+        <TreeView x:Name="keywordTreeView" Grid.Row="1" TreeViewItem.Selected="keywordTreeView_Selected">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate  DataType="{x:Type local:Node}" ItemsSource="{Binding Children}">
+                    <TextBlock Text="{Binding Output}"/>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+            <!--<TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded" Value="True" />
+                </Style>
+            </TreeView.ItemContainerStyle>-->
+            <TreeView.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Gray"/>
+            </TreeView.Resources>
+            <!--<TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    <Setter Property="IsSelected" Value="{Binding IsSelected,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                </Style>
+            </TreeView.ItemContainerStyle>-->
+        </TreeView>
+    </Grid>
+</UserControl>

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="ScienceResearchWpfApplication.HalfFullUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScienceResearchWpfApplication"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="100">
+    <Grid>
+        <ToolBar x:Name="toolBar"    Margin="0,0,0,0" HorizontalAlignment="Left" >
+            <Button   Name="btnFull" Click="btnFull_Click" Height="30" >
+                <TextBlock Text="全屏" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+            </Button>
+            <Button   Name="btnHalf" Click="btnHalf_Click" Height="30" >
+                <TextBlock Text="半屏" Grid.Row="0" Margin="0,0,0,0"></TextBlock>
+            </Button>
+        </ToolBar>
+    </Grid>
+</UserControl>

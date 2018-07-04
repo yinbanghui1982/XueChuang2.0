@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="ScienceResearchWpfApplication.TextManage.FontSelectUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScienceResearchWpfApplication.TextManage"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="300" Loaded="UserControl_Loaded">
+    <Grid>
+        <ToolBar x:Name="toolBar">
+            <ComboBox  Name="fontComboBox"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" MinWidth="70" SelectionChanged="fontComboBox_SelectionChanged" Margin="0,0,15,0"/>
+            <ComboBox  Name="sizeComboBox"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" MinWidth="50" SelectionChanged="sizeComboBox_SelectionChanged" Margin="0,0,15,0"/>
+        </ToolBar>
+    </Grid>
+</UserControl>

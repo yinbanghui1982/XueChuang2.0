@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScienceResearchWpfApplication", "ScienceResearchWpfApplication\ScienceResearchWpfApplication.csproj", "{B7D0F129-2F6B-42BE-84A4-8B407278D45E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|PHP 7.0 = Debug|PHP 7.0
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|PHP 7.0 = Release|PHP 7.0
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7D0F129-2F6B-42BE-84A4-8B407278D45E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D0F129-2F6B-42BE-84A4-8B407278D45E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7D0F129-2F6B-42BE-84A4-8B407278D45E}.Debug|PHP 7.0.ActiveCfg = Debug|Any CPU
+		{B7D0F129-2F6B-42BE-84A4-8B407278D45E}.Debug|PHP 7.0.Build.0 = Debug|Any CPU
+		{B7D0F129-2F6B-42BE-84A4-8B407278D45E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B7D0F129-2F6B-42BE-84A4-8B407278D45E}.Debug|x86.Build.0 = Debug|Any CPU
+		{B7D0F129-2F6B-42BE-84A4-8B407278D45E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D0F129-2F6B-42BE-84A4-8B407278D45E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7D0F129-2F6B-42BE-84A4-8B407278D45E}.Release|PHP 7.0.ActiveCfg = Release|Any CPU
+		{B7D0F129-2F6B-42BE-84A4-8B407278D45E}.Release|PHP 7.0.Build.0 = Release|Any CPU
+		{B7D0F129-2F6B-42BE-84A4-8B407278D45E}.Release|x86.ActiveCfg = Release|Any CPU
+		{B7D0F129-2F6B-42BE-84A4-8B407278D45E}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

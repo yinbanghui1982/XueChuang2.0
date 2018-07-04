@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="ScienceResearchWpfApplication.ParagraphFigureUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScienceResearchWpfApplication"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="500" LostFocus="UserControl_LostFocus">
+    <Grid Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="500*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ToolBar x:Name="toolBar"   Grid.Row="0" Grid.Column="0"  Margin="0,0,0,0" HorizontalAlignment="Left" >
+            <Button   Name="btnFull" Click="btnFull_Click" >
+                <TextBlock Text="全屏" Grid.Row="0" Margin="15,0"></TextBlock>
+            </Button>
+            <Button   Name="btnHalf" Click="btnHalf_Click" >
+                <TextBlock Text="半屏" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+            </Button>
+            <Button   Name="btnSave" Click="btnSaveAs_Click" >
+                <TextBlock Text="另存" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+            </Button>
+            <TextBox Name="ydTextBox" Width="100"/>
+        </ToolBar>
+        <Viewbox Margin="0,0,0,0" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <Viewbox.Resources>
+                <Style
+                TargetType="Border">
+                    <Setter
+                    Property="BorderBrush"
+                    Value="LightGray"></Setter>
+                    <Setter
+                    Property="BorderThickness"
+                    Value="1"></Setter>
+                </Style>
+            </Viewbox.Resources>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                <local:ScienceResearchInkCanvas x:Name="canvas" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center"  >
+                    <Image Name="img" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                </local:ScienceResearchInkCanvas>
+            </Border>
+        </Viewbox>
+    </Grid>
+</UserControl>

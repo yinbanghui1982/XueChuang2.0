@@ -1,0 +1,155 @@
+﻿<UserControl x:Class="ScienceResearchWpfApplication.DatabaseManage.DataBaseUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScienceResearchWpfApplication.DatabaseManage"
+             xmlns:ScienceResearchWpfApplication="clr-namespace:ScienceResearchWpfApplication"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600" KeyDown="UserControl_KeyDown" Loaded="UserControl_Loaded" LostFocus="UserControl_LostFocus">
+    <Grid Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="500*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="3" >
+            <ToolBar x:Name="toolBar"   Margin="0,0,0,0" HorizontalAlignment="Left" Height="30" >
+                <Button   Name="btnText" Click="btnText_Click" >
+                    <TextBlock Text="文本" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnInk" Click="btnInk_Click" >
+                    <TextBlock Text="笔迹" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   x:Name="btnFull" Click="btnFull_Click" >
+                    <TextBlock Text="全屏" Margin="0,0,15,0"/>
+                </Button>
+                <Button   x:Name="btnHalf" Click="btnHalf_Click" Margin="0,0,0,0" >
+                    <TextBlock Text="半屏"/>
+                </Button>
+            </ToolBar>
+
+            <CheckBox Name="pizuCheckBox" Margin="0,0,0,0" Content="批注" Checked="pizuCheckBox_Checked" Unchecked="pizuCheckBox_Unchecked" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+            <ToolBar x:Name="toolBar2"  Margin="0,0,0,0" HorizontalAlignment="Left" >
+                <Button   x:Name="btnQian" Click="btnQian_Click" >
+                    <TextBlock Text="最前" Margin="0,0,15,0"/>
+                </Button>
+                <Button   x:Name="btnHou" Click="btnHou_Click" >
+                    <TextBlock Text="最后" Margin="0,0,15,0"/>
+                </Button>
+                <Button   x:Name="btnAddingNewItem" Click="btnAddingNewItem_Click" >
+                    <TextBlock Text="增行" Margin="0,0,15,0"/>
+                </Button>
+                <Button   x:Name="btnSave" Click="btnSave_Click" >
+                    <TextBlock Text="保存" Margin="0,0,15,0"/>
+                </Button>
+                <Button   x:Name="btnRemoveNewItem" Click="btnRemoveNewItem_Click" >
+                    <TextBlock Text="删行" Margin="0,0,15,0"/>
+                </Button>                
+            </ToolBar>
+
+            <ToolBar x:Name="toolBar3"  Margin="0,0,0,0" HorizontalAlignment="Left" >
+                <Button   x:Name="btnAddKeyword" Click="btnAddKeyword_Click" >
+                    <TextBlock Text="增关" Margin="0,0,15,0"/>
+                </Button>
+                <Button   x:Name="btnRemoveKeyword" Click="btnRemoveKeyword_Click" >
+                    <TextBlock Text="删关" Margin="0,0,0,0"/>
+                </Button>
+                <TextBox Name="keywordTextBox" Width="40" Margin="15,0"/>
+                <Button   Name="btnResearch" Click="btnResearch_Click" >
+                    <TextBlock Text="关筛" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnAllKeyword" Click="btnAllKeyword_Click" >
+                    <TextBlock Text="关全" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+            </ToolBar>
+
+            <ToolBar x:Name="toolBar4"  Margin="0,0,0,0" HorizontalAlignment="Left" >
+                <TextBox Name="contentTextBox" Width="40" Margin="0,0,15,0"/>
+                <Button   Name="btnContent" Click="btnContent_Click" >
+                    <TextBlock Text="内筛" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnAllContent" Click="btnAllContent_Click" >
+                    <TextBlock Text="内全" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                <Button   Name="btnContentJump" Click="btnContentJump_Click">
+                    <TextBlock Text="内跳" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+            </ToolBar>
+            <ToolBar x:Name="toolBar5"  Margin="0,0,0,0" HorizontalAlignment="Left" >
+                <Button   Name="btnMode" Click="btnMode_Click" >
+                    <TextBlock Text="建模" Grid.Row="0" Margin="0,0,15,0"></TextBlock>
+                </Button>
+                
+            </ToolBar>
+        </WrapPanel>
+        <Grid Name="grid1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="0" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="214*"/>
+                <ColumnDefinition Width="11*"/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid x:Name="contentDataGrid" Grid.Row="0" ColumnWidth="*"  Panel.ZIndex="0" AutoGenerateColumns="False" 
+                  Background="Transparent"  VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling"
+                  Opacity="0.8" EnableRowVirtualization="True" StylusEnter="contentDataGrid_StylusEnter" ColumnHeaderHeight="30" 
+                  Style="{DynamicResource DataGridStyle1}" MouseLeftButtonUp="contentDataGrid_MouseLeftButtonUp"
+                  SelectionChanged="contentDataGrid_SelectionChanged" GotFocus="contentDataGrid_GotFocus" Grid.ColumnSpan="2" >
+                <!--<DataGrid.RowStyle >
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Background" Value="White"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightGray"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="LightGray"/>
+                                <Setter Property="Foreground" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>-->
+                <DataGrid.Resources>
+                    <!--<Style x:Key="DataGridStyle1" TargetType="{x:Type DataGrid}">
+                        <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+                    </Style>-->
+                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Gray"/>
+                </DataGrid.Resources>
+            </DataGrid>
+            <ScrollViewer x:Name="scroll_ink" VerticalScrollBarVisibility="Hidden"  Grid.Row="0" Grid.Column="0"  Panel.ZIndex="1" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" PanningMode="VerticalOnly" ManipulationBoundaryFeedback="scrolls_ManipulationBoundaryFeedback"  VerticalAlignment="Top" Grid.ColumnSpan="2">
+                <ScrollViewer.Content>
+                    <ScienceResearchWpfApplication:ScienceResearchInkCanvas x:Name="inkCanvas" Background="Transparent"/>
+                </ScrollViewer.Content>
+            </ScrollViewer>
+
+            <DataGrid Name="contentSelectedDataGrid" Grid.Row="1" AutoGenerateColumns="False" GotFocus="contentSelectedDataGrid_GotFocus"
+                       ColumnHeaderHeight="30"  MouseLeftButtonUp="contentSelectedDataGrid_MouseLeftButtonUp" Grid.ColumnSpan="2"  IsReadOnly="True"/>
+        </Grid>
+
+        <DataGrid x:Name="keywordDataGrid" Grid.Row="1" Grid.Column="1" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="关键词" Binding="{Binding Path=关键词Row.关键词}" Width="*"/>
+            </DataGrid.Columns>
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Gray"/>
+            </DataGrid.Resources>
+        </DataGrid>
+
+        <DataGrid x:Name="keywordAllDataGrid" Grid.Row="1" Grid.Column="2" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" MouseLeftButtonUp="keywordAllDataGrid_MouseLeftButtonUp">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="关键词" Binding="{Binding Path=关键词}" Width="*"/>
+            </DataGrid.Columns>
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Gray"/>
+            </DataGrid.Resources>
+        </DataGrid>
+    </Grid>
+</UserControl>

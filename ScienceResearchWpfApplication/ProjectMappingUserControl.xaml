@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="ScienceResearchWpfApplication.ProjectMappingUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScienceResearchWpfApplication"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="500*" />
+            <RowDefinition Height="500*" />
+            <RowDefinition Height="500*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="300*"/>
+        </Grid.ColumnDefinitions>
+        <ToolBar x:Name="toolBar"   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,0" HorizontalAlignment="Left" >
+            <Button   x:Name="btnFull" Click="btnFull_Click" >
+                <TextBlock Text="全屏" Grid.Row="0" Margin="15,0"/>
+            </Button>
+            <Button   x:Name="btnHalf" Click="btnHalf_Click" >
+                <TextBlock Text="半屏" Grid.Row="0" Margin="0,0,15,0"/>
+            </Button>
+            <Button   x:Name="btnRefresh" Click="btnRefresh_Click" >
+                <TextBlock Text="刷新" Grid.Row="0" Margin="0,0,15,0"/>
+            </Button>
+        </ToolBar>
+        <DataGrid x:Name="projectDataGrid" Grid.Row="1" Grid.RowSpan="4" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" MouseLeftButtonUp="projectDataGrid_MouseLeftButtonUp" IsReadOnly="True" SelectionChanged="projectDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}" MaxWidth="50"/>
+                <DataGridTextColumn Header="项目名称" Binding="{Binding Path=项目名称}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid  Name="fz_DataGrid" Grid.Row="1" Grid.Column="1" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" MouseLeftButtonUp="fz_DataGrid_MouseLeftButtonUp" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="仿真ID" Binding="{Binding Path=ID}" MaxWidth="50"/>
+                <DataGridTextColumn Header="说明" Binding="{Binding Path=说明}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid  Name="wjwz_DataGrid" Grid.Row="1" Grid.Column="2" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" MouseLeftButtonUp="wjwz_DataGrid_MouseLeftButtonUp" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="文件位置ID" Binding="{Binding Path=ID}" MaxWidth="80"/>
+                <DataGridTextColumn Header="名称" Binding="{Binding Path=名称}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid  Name="gjc_DataGrid" Grid.Row="2" Grid.Column="1" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" MouseLeftButtonUp="gjc_DataGrid_MouseLeftButtonUp" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="关键词ID" Binding="{Binding Path=ID}" MaxWidth="80"/>
+                <DataGridTextColumn Header="关键词" Binding="{Binding Path=关键词}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid  Name="tpcz_DataGrid" Grid.Row="2" Grid.Column="2" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" MouseLeftButtonUp="tpcz_DataGrid_MouseLeftButtonUp" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="图片创作ID" Binding="{Binding Path=ID}" MaxWidth="100"/>
+                <DataGridTextColumn Header="图片文件" Binding="{Binding Path=图片文件}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid  Name="wz_DataGrid" Grid.Row="3" Grid.Column="1" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" MouseLeftButtonUp="wz_DataGrid_MouseLeftButtonUp" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="文章ID" Binding="{Binding Path=ID}" MaxWidth="100"/>
+                <DataGridTextColumn Header="文章名" Binding="{Binding Path=文章名}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
