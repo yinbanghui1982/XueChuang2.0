@@ -3,7 +3,7 @@
 namespace ScienceResearchWpfApplication.DatabaseManage
 {
     /// <summary>
-    /// 关键词2
+    /// 关键词
     /// </summary>
     public class Keyword
     {
