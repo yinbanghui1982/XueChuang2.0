@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ScienceResearchWpfApplication
 {
+    /// <summary>
+    /// 模式识别和匹配的注册表管理以及相应的静态变量管理
+    /// </summary>
     class ModeSetup
     {
-        //模式识别和匹配的注册表管理以及相应的静态变量管理
-        //----------------------------------------------------------------------
         public static  Dictionary<string, string> shibieDictionary = new Dictionary<string, string>();
         static Dictionary<string, string> shibieInitialDictionary = new Dictionary<string, string>();
         public static Dictionary<string, string> pipeiDictionary = new Dictionary<string, string>();
