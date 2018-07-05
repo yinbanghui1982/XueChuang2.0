@@ -16,7 +16,9 @@ namespace ScienceResearchWpfApplication
         public static Dictionary<string, string> pipeiDictionary = new Dictionary<string, string>();
         static Dictionary<string, string> pipeiInitialDictionary = new Dictionary<string, string>();
 
-        //注册表设置初始值
+        /// <summary>
+        /// 注册表设置初始值
+        /// </summary>
         public static void set_initial_value()
         {
             //模式识别
