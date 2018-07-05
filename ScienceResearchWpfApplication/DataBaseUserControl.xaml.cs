@@ -448,6 +448,11 @@ namespace ScienceResearchWpfApplication.DatabaseManage
             btnInk.IsEnabled = false;
         }
 
+        /// <summary>
+        /// 标签页加载
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             scienceResearchKey = MainWindow.scienceResearchKey;
